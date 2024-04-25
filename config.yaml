@@ -1,0 +1,16 @@
+name: My Envio Indexer
+networks:
+  - id: 8453
+    start_block: 0
+    contracts:
+      - name: UniswapV3Factory
+        address:
+          - 0x33128a8fC17869897dcE68Ed026d694621f6FDfD
+        handler: src/EventHandlers.ts
+        events:
+          - event: PoolCreated(address indexed token0, address indexed token1, uint24 indexed fee, int24 tickSpacing, address pool)
+      - name: UniswapV3Pool
+        address:
+        handler: src/EventHandlers.ts
+        events:
+          - event: Swap(address indexed sender, address indexed recipient, int256 amount0, int256 amount1, uint160 sqrtPriceX96, uint128 liquidity, int24 tick)
